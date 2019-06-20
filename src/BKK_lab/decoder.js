@@ -2,7 +2,7 @@ function Decoder(bytes, port) {
 
     function Hex2Bin(hex) { return ("00000000" + (parseInt(hex, 16)).toString(2)).substr(-8); }
     function Bin2Dec(n) { return parseInt(n, 2); }
-
+    function Dec2Bin(n) { return n.toString(2) }
 
 
 
@@ -24,8 +24,8 @@ function Decoder(bytes, port) {
         if (0x4E === bytes[0]) {
             param.type = "0x4E Periodic data";
         }
-        var status = Hex2Bin(bytes[1]);
-        param.Frame_Counter = parseInt(status.charAt(0), 10) * Math.pow(2, 2) + parseInt(status.charAt(1), 10) * Math.pow(2, 1) + parseInt(status.charAt(2), 10);
+        var status = Dec2Bin(bytes[1]);
+        param.Frame_Counter = parseInt(status.charAt(0), 2) * Math.pow(2, 2) + parseInt(status.charAt(1), 2) * Math.pow(2, 1) + parseInt(status.charAt(2), 2);
         //ignorerer foreløpig reserved bit
         if (parseInt(status.charAt(4)) === 1) {
             param.configuration_inconsistency = true;
