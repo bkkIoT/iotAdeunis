@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo page COMFORT</title>
+</head>
+
+<body>
+<h1>Demo page COMFORT</h1>
+<pre data-frame="100021c000010001012c"></pre>
+<pre data-frame="1f20410001410001"></pre>
+<pre data-frame="4c2000c52000c72000c82000ca1f00cc1f00cd20"></pre>
+<script src="../../dist/buffer-custom-shim.js"></script>
+<script src="../../dist/lib.public.js"></script>
+<script>
+    var decoder = new codec.Decoder();
+
+    decoder.setDeviceType("comfort");
+
+    document.querySelectorAll('pre[data-frame]').forEach(pre => {
+        var frameAttr = pre.attributes.getNamedItem('data-frame');
+    if (!frameAttr) {
+        return;
+    }
+
+    var content;
+    try {
+        content = decoder.decode(frameAttr.value);
+    } catch (error) {
+        console.log(error);
+        content = { 'error': error.toString() };
+    }
+    pre.textContent = frameAttr.value + ':\n';
+    pre.textContent += JSON.stringify(content, null, 2);
+    });
+</script>
+</body>
+
+</html>

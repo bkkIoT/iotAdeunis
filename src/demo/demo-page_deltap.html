@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo page DELTA P</title>
+</head>
+
+<body>
+<h1>Demo page DELTA P</h1>
+<pre data-frame="1000000c00010002012c"></pre>
+<pre data-frame="11400001012c0000"></pre>
+<pre data-frame="1f20410001410001"></pre>
+<pre data-frame="5320FE0CFF06000000FA01F4"></pre>
+<pre data-frame="54420101F4"></pre>
+<pre data-frame="55A0D8F0EC78000013882710"></pre>
+<pre data-frame="56C00101F4"></pre>
+<pre data-frame="512203000001000001"></pre>
+<pre data-frame="522001000000100003"></pre>
+<script src="../../dist/buffer-custom-shim.js"></script>
+<script src="../../dist/lib.public.js"></script>
+<script>
+    var decoder = new codec.Decoder();
+
+    decoder.setDeviceType("deltap");
+
+    document.querySelectorAll('pre[data-frame]').forEach(pre => {
+        var frameAttr = pre.attributes.getNamedItem('data-frame');
+    if (!frameAttr) {
+        return;
+    }
+
+    var content;
+    try {
+        content = decoder.decode(frameAttr.value);
+    } catch (error) {
+        console.log(error);
+        content = { 'error': error.toString() };
+    }
+    pre.textContent = frameAttr.value + ':\n';
+    pre.textContent += JSON.stringify(content, null, 2);
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./dist/test"
+  },
+  "exclude": [
+    ".vscode",
+    "bin",
+    "delivery",
+    "dist",
+    "node_modules",
+    "src/cli.ts"
+  ]
+}

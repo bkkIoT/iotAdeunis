@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./dist/",
+    "types": [
+      "./dist/lib"
+    ],
+    "declaration": true
+  },
+  "files": [
+    "src/cli.ts"
+  ]
+}

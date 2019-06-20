@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "none",
+    "outFile": "./dist/lib.js",
+    "declaration": true
+  },
+  "exclude": [
+    ".vscode",
+    "bin",
+    "delivery",
+    "dist",
+    "node_modules",
+    "src/**/*.spec.ts",
+    "src/cli.ts"
+  ]
+}

@@ -1,0 +1,98 @@
+namespace codec {
+
+  /**
+   * Get frame type in French from frame code
+   * @param code frame code
+   * @returns frame type in French
+   */
+  export function getFrameTypeFr(code: number) {
+    switch (code) {
+      case 0x00: return 'Invalide';
+      case 0x01:
+      case 0x02:
+      case 0x03:
+      case 0x04:
+      case 0x05:
+      case 0x06:
+      case 0x07:
+      case 0x08:
+      case 0x09:
+      case 0x0A:
+      case 0x0B:
+      case 0x0C:
+      case 0x0D:
+      case 0x0E:
+      case 0x0F:
+        return 'Device Management';
+      case 0x10:
+      case 0x11:
+      case 0x12:
+      case 0x13:
+      case 0x14:
+      case 0x15:
+      case 0x16:
+      case 0x17:
+      case 0x18:
+      case 0x19:
+      case 0x1A:
+      case 0x1B:
+      case 0x1C:
+      case 0x1D:
+      case 0x1E:
+        return 'Trame de status application';
+      case 0x1F: return 'Trame status TOR';
+      case 0x20:
+      case 0x21:
+      case 0x22:
+      case 0x23:
+      case 0x24:
+      case 0x25:
+      case 0x26:
+      case 0x27:
+        return 'Trame status réseau';
+      case 0x28:
+      case 0x29:
+      case 0x2A:
+      case 0x2B:
+      case 0x2C:
+      case 0x2D:
+      case 0x2E:
+        return 'Réservée';
+      case 0x2F: return 'Downlink ACK';
+      case 0x30: return 'Trame de vie';
+      case 0x31: return 'Résultats de la requête de downlink';
+      case 0x32: return 'Résultats de la requête de downlink';
+      case 0x33: return 'Résultats de la requête de downlink';
+      case 0x40: return 'Dry Contact';
+      case 0x41: return 'GPS Tracker';
+      case 0x42: return 'Analog / Sensor V2';
+      case 0x43: return 'Température';
+      // case 0x40: return '(Get USER register values)';
+      // case 0x41: return '(Set USER register values)';
+      // case 0x42: return '(Get PROD register values)';
+      // case 0x43: return '(Set PROD register values)';
+      case 0x44: return 'Modbus Master (données périodiques)';
+      case 0x45: return 'Modbus Master (alarmes)';
+      case 0x46: return 'Pulse V2 (données périodiques)';
+      case 0x47: return 'Pulse V2 (alarme)';
+      case 0x48: return 'Pulse V2 (historique)';
+      case 0x49: return 'TIC (données périodiques)';
+      case 0x4A: return 'TIC (alarme/événement)';
+      case 0x4B: return 'Etalon';
+      case 0x4C: return 'Température Humidité – smart building (données périodiques)';
+      case 0x4D: return 'Température Humidité – smart building (alarme)';
+      case 0x4E: return 'Présence Luminosité – smart building (données périodiques)';
+      case 0x4F: return 'Présence Luminosité – smart building (alarme présence)';
+      case 0x50: return 'Présence Luminosité – smart building (alarme luminosité )';
+      case 0x51: return 'TOR1 alarm (bouton in SB)';
+      case 0x52: return 'TOR2 alarm';
+      case 0x53: return 'Delta P (données périodiques)';
+      case 0x54: return 'Delta P (alarme)';
+      case 0x55: return '0-10 V (données périodiques) (Produit deltaP)';
+      case 0x56: return '0-10 V (alarme) (Produit deltaP)';
+      default:
+        return 'libre';
+    }
+  }
+
+}

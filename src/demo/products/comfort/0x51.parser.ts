@@ -1,0 +1,24 @@
+namespace codec {
+
+    /**
+     * Comfort 0x51 (TOR configuration) frame parser
+     */
+    export class Comfort0x51Parser implements FrameParser {
+
+      readonly deviceType = 'comfort';
+      readonly frameCode = 0x51;
+
+      private sb0x51Parser = new Sb0x51Parser();
+
+      public parseFrame(payload: Buffer, configuration: Buffer, network: Network) {
+        const appContent = this.sb0x51Parser.parseFrame(payload, configuration, network);
+
+        appContent['type'] = '0x51 Comfort TOR1 alarm';
+
+        return appContent;
+      }
+
+    }
+
+}
+

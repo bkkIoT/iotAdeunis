@@ -1,0 +1,54 @@
+{
+  "name": "adeunis-codecs",
+  "version": "1.0.0",
+  "description": "Adeunis codecs",
+  "author": "Adeunis",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build",
+    "test": "npm run build:lib && npm run build:test && cross-env NODE_ENV=test mocha -r dist/lib dist/test/**/*.spec.js",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "version": "mustache package.json src/template/productAll.mustache > src/template/productAll.json",
+    "build": "npm run version && npm run build:lib && npm run build:cli && concat -o dist/index.js dist/lib.js dist/cli.js",
+    "build:lib": "tsc --project tsconfig.lib.json && npm run genheader && concat -o dist/lib.public.js dist/header.txt dist/lib.js",
+    "build:cli": "tsc --project tsconfig.cli.json",
+    "build:test": "tsc --project tsconfig.test.json",
+    "genheader": "mustache src/template/productAll.json src/template/header.mustache > dist/header.txt",
+    "pack:tgz": "npm pack",
+    "pack:exe": "pkg bin/codec --target node8-win-x64",
+    "pack:linux": "pkg bin/codec --target node8-linux-x64",
+    "docs": "hads"
+  },
+  "bin": {
+    "codec": "bin/codec"
+  },
+  "dependencies": {
+    "chalk": "2.4.1",
+    "cli-table": "0.3.1",
+    "json-2-csv": "3.5.0",
+    "minimist": "1.2.0"
+  },
+  "devDependencies": {
+    "@types/chai": "4.1.7",
+    "@types/chalk": "2.2.0",
+    "@types/cli-table": "0.3.0",
+    "@types/minimist": "1.2.0",
+    "@types/mocha": "5.2.5",
+    "@types/node": "10.12.12",
+    "chai": "4.2.0",
+    "concat": "1.0.3",
+    "cross-env": "5.2.0",
+    "hads": "1.7.1",
+    "mocha": "5.2.0",
+    "mustache": "3.0.1",
+    "pkg": "4.3.5",
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.14.0",
+    "typescript": "3.2.2"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
