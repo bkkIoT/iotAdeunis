@@ -65,9 +65,10 @@ function Decoder(bytes, port) {
     if (param.type.localeCompare(dict[0x4E])) {
         //sjekker verdi til global presence counter
         param.presence_global_counter = Bin2Dec(Dec2Bin(bytes[2]).concat(Dec2Bin(bytes[3])));
+        param.presence_current_counter = Bin2Dec(Dec2Bin(bytes[4]).concat(Dec2Bin(bytes[5])));
+        param.luminosity_current_percentage = bytes[6];
     }
-    //.
-
+    
 
 
 
