@@ -66,7 +66,7 @@ function Decoder(bytes, port) {
         //sjekker verdi til global presence counter
         param.presence_global_counter = Bin2Dec(Dec2Bin(bytes[2]).concat(Dec2Bin(bytes[3])));
     }
-
+    //.
 
 
 
